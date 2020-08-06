@@ -1,2 +1,1 @@
-# vue-project-config
-vue项目代码规范配置
+# vue项目代码规范配置
