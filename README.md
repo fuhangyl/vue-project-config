@@ -201,12 +201,14 @@ module.exports = {
     "git add -A"
   ],
   "*.{html,vue,css,sass,scss}": [
-    "yarn stylelint"
+    "npm run stylelint"
   ]
 }
 ```
 
-这时候你如果执行git commit -m '提交描述'的时候，会发现提交之前会调用eslint与stylelint进行代码校验，校验失败无法提交
+这时候你如果执行git commit -m '提交描述'的时候，会发现提交之前会调用eslint与stylelint进行代码格式化，这个时候提交到仓库的代码就统一风格了。
+
+以上就是统一代码规范的一些的配置，后续也会不断的完善这套配置。
 
 
 
