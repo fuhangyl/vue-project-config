@@ -153,7 +153,6 @@ module.exports = {
 首先新建.commitlintrc.js文件，添加如下代码
 
 ```js
-
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
