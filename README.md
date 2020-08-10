@@ -148,7 +148,7 @@ module.exports = {
 // vue项目(代码都在src目录中)
 "stylelint": "stylelint src/**/*.{html,vue,css,sass,scss} --fix",
 // nuxt项目(代码分布在pages/components/layouts目录中)
-"stylelint": "stylelint **/*.{vue,css} --fix"
+"stylelint": "stylelint **/*.{html,vue,css,sass,scss} --fix"
 ```
 
 当我们执行npm run stylelint就可以对样式进行格式化，当然vscode也会在你保存文件的时候校验一次
