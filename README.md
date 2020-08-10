@@ -59,7 +59,7 @@
   },
 ```
 
-### 3、配置eslint
+#### 3、配置eslint
 
 在项目的根目录下面新建 .eslintrc.js与.eslintignore文件
 
@@ -115,3 +115,31 @@ yarn-error.log*
 ```
 
 这个时候执行npm run lint就可以对代码进行格式化，当然vscode也会在你保存文件的时候校验一次
+
+#### 4、配置stylelint
+
+在项目根目录下面新建.stylelintrc.js与.stylelintignore文件
+
+然后在.stylelintrc.js文件内添加以下内容
+
+```js
+module.exports = {
+  extends: ["stylelint-config-standard","stylelint-config-recess-order"],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  rules: {
+    // stylelint校验规
+  }
+}
+```
+
+在.stylelintignore中添加同.eslintignore文件中的代码
+
+配置完之后，在package.json的script里面添加命令
+
+```js
+"stylelint": "stylelint src/**/*.{html,vue,css,sass,scss} --fix",
+```
+
+当我们执行npm run stylelint就可以对样式进行格式化，当然vscode也会在你保存文件的时候校验一次
