@@ -8,4 +8,19 @@
 
 下面我们就来一起看看具体的配置：
 
-1.安装依赖
+1、配置过程中需要的依赖
+* @vue/cli-plugin-eslint
+* @vue/eslint-config-prettier
+* babel-eslint
+* eslint
+* eslint-plugin-babel
+* eslint-plugin-prettier
+* eslint-plugin-vue
+* husky
+* lint-staged
+* prettier
+* stylelint
+* stylelint-config-recess-order
+* stylelint-config-standard
+* stylelint-prettier
+* stylelint-scss
