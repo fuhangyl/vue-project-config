@@ -8,7 +8,7 @@
 
 下面我们就来一起看看具体的配置：
 
-1、配置过程中需要的依赖
+#### 1、配置过程中需要的依赖
 * @vue/cli-plugin-eslint
 * @vue/eslint-config-prettier
 * babel-eslint
