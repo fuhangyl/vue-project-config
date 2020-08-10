@@ -114,6 +114,12 @@ yarn-error.log*
 *.sw?
 ```
 
+配置完之后，在package.json的script里面添加命令
+
+```js
+"eslint": "vue-cli-service lint"
+```
+
 这个时候执行npm run lint就可以对代码进行格式化，当然vscode也会在你保存文件的时候校验一次
 
 #### 4、配置stylelint
@@ -139,7 +145,10 @@ module.exports = {
 配置完之后，在package.json的script里面添加命令
 
 ```js
+// vue项目(代码都在src目录中)
 "stylelint": "stylelint src/**/*.{html,vue,css,sass,scss} --fix",
+// nuxt项目(代码分布在pages/components/layouts目录中)
+"stylelint": "stylelint **/*.{vue,css} --fix"
 ```
 
 当我们执行npm run stylelint就可以对样式进行格式化，当然vscode也会在你保存文件的时候校验一次
