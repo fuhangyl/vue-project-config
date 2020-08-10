@@ -4,7 +4,7 @@
 
 在团队开发中，统一代码规范是非常重要的，如果在项目开发的过程中，每个人按照自己的规范来发开功能，最后的代码看起来就会很糟糕。
 
-## How configure
+## How configure?
 
 下面我们就来一起看看具体的配置：
 
@@ -58,3 +58,60 @@
      "source.fixAll": true
   },
 ```
+
+### 3、配置eslint
+
+在项目的根目录下面新建 .eslintrc.js与.eslintignore文件
+
+然后在.eslintrc.js文件内添加以下内容
+
+```js
+module.exports = {
+  root: true,
+  globals: {
+    process: true
+  },
+  parserOptions: {
+    parser: 'babel-eslint',
+    sourceType: 'module'
+  },
+  env: {
+    browser: true,
+    node: true,
+    es6: true
+  },
+  extends: ['plugin:vue/recommended', 'eslint:recommended'],
+  plugins: ['babel', 'prettier'],
+  rules:{ 
+    // ESLint校验规则
+  }
+}
+```
+
+在.eslintignore文件中添加以下代码(不需要检测的文件)：
+
+```js
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+```
+
+这个时候执行npm run lint就可以对代码进行格式化，当然vscode也会在你保存文件的时候校验一次
