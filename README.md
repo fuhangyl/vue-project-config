@@ -147,7 +147,67 @@ module.exports = {
 #### 5、配置husky
 
 当我们将eslint和stylelint配置完成之后，vscode会自动根据配置的校验规则格式化代码，但是也避免不了其他同事没有配置编辑器或者使用了其他的编辑器进行项目开发，如果将未校验的代码提交到仓库里面，将导致所有人的代码由于校验规则不匹配而报错，这时候就需要使用husky在提交代码时候进行校验。
-在git提交代码时候，会触发一系列hook钩子函数，而husky就是一个Git hooks工具。lint-staged是一个在git暂存文件上运行linters的工具,为什么要用这个工具呢，因为我们在提交代码的时候，只需要对已经修改过的文件进行校验，不然检查所有文件，比较浪费时间。那我们改怎么配置呢？
+
+当我们在git提交代码时候，会触发一系列hook钩子函数，而husky就是一个Git hooks工具。lint-staged是一个在git暂存文件上运行linters的工具,为什么要用这个工具呢，因为我们在提交代码的时候，只需要对已经修改过的文件进行校验，不然检查所有文件，比较浪费时间。那我们改怎么配置呢？
+
+首先新建.commitlintrc.js文件，添加如下代码
+
+```js
+
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        // 新功能（feature）
+        'feat',
+        // 修补bug
+        'fix',
+        // 文档（documentation）
+        'docs',
+        // 格式（不影响代码运行的变动）
+        'style',
+        // 重构（即不是新增功能，也不是修改bug的代码变动）
+        'refactor',
+        // 增加测试
+        'test',
+        // 回滚
+        'revert',
+        // 构建过程或辅助工具的变动
+        'config',
+        // 其他改动
+        'chore'
+      ]
+    ],
+    'subject-full-stop': [0, 'never'],
+    'subject-case': [0, 'never']
+  }
+}
+```
+
+然后在package.json文件末尾添加以下代码
+
+```js
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+  }
+},
+"lint-staged": {
+  "*.{js,vue}": [
+    "vue-cli-service lint",
+    "git add -A"
+  ],
+  "*.{html,vue,css,sass,scss}": [
+    "yarn stylelint"
+  ]
+}
+```
+
+这时候你如果执行git commit -m '提交描述'的时候，会发现提交之前会调用eslint与stylelint进行代码校验，校验失败无法提交
 
 
 
