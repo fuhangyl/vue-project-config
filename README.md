@@ -20,8 +20,41 @@
 * lint-staged
 * prettier
 * stylelint
-* stylelint-config-recess-order
+* stylelint-config-recess-order 
 * stylelint-config-standard
 * stylelint-prettier
 * stylelint-scss
+
 备注：现在创建项目基本都是基于vue-cli3.x(ESLint + Prettite)，上面有部分依赖在创建项目的时候会默认安装，可忽略。
+
+#### 2、VSCode 编辑器配置
+
+2.1、安装以下插件
+* eslint
+* stylelint
+* Prettier - Code formatter
+
+2.2、在vscode的setting文件里面添加以下代码(在编辑器中按住Ctrl + Shift + P，然后输入settings)：
+```js
+"eslint.enable":true,
+"eslint.options": {
+  "extensions":[
+    ".js",
+    ".vue",
+    ".ts",
+    ".tsx"
+  ]
+ },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "css.validate": true,
+  "scss.validate": true,
+  "less.validate": true,
+  "editor.codeActionsOnSave": {
+     "source.fixAll": true
+  },
+```
