@@ -9,13 +9,8 @@
 下面我们就来一起看看具体的配置：
 
 #### 1、配置过程中需要的依赖
-<<<<<<< HEAD
 * @commitlint/cli
 * @commitlint/config-conventional
-=======
-* @commitlint/cli": "^9.0.1
-* @commitlint/config-conventional": "^9.0.1
->>>>>>> f2e4e00478b9b11083e9ab5698ce7e369773e0a0
 * @vue/cli-plugin-eslint
 * @vue/eslint-config-prettier
 * babel-eslint
