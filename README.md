@@ -9,6 +9,8 @@
 下面我们就来一起看看具体的配置：
 
 #### 1、配置过程中需要的依赖
+* @commitlint/cli
+* @commitlint/config-conventional
 * @vue/cli-plugin-eslint
 * @vue/eslint-config-prettier
 * babel-eslint
@@ -31,7 +33,6 @@
 
 2.1、安装以下插件
 * eslint
-* stylelint
 * Prettier - Code formatter
 
 2.2、在vscode的setting文件里面添加以下代码(在编辑器中按住Ctrl + Shift + P，然后输入settings)：
@@ -45,18 +46,15 @@
     ".tsx"
   ]
  },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "css.validate": true,
-  "scss.validate": true,
-  "less.validate": true,
-  "editor.codeActionsOnSave": {
-     "source.fixAll": true
-  },
+"eslint.validate": [
+  "javascript",
+  "javascriptreact",
+  "typescript",
+  "typescriptreact"
+],
+"editor.codeActionsOnSave": {
+  "source.fixAll": true
+},
 ```
 
 #### 3、配置eslint
@@ -116,39 +114,11 @@ yarn-error.log*
 
 这个时候执行npm run lint就可以对代码进行格式化，当然vscode也会在你保存文件的时候校验一次
 
-#### 4、配置stylelint
-
-在项目根目录下面新建.stylelintrc.js与.stylelintignore文件
-
-然后在.stylelintrc.js文件内添加以下内容
-
-```js
-module.exports = {
-  extends: ["stylelint-config-standard","stylelint-config-recess-order"],
-  "plugins": [
-    "stylelint-scss"
-  ],
-  rules: {
-    // stylelint校验规
-  }
-}
-```
-
-在.stylelintignore中添加同.eslintignore文件中的代码
-
-配置完之后，在package.json的script里面添加命令
-
-```js
-"stylelint": "stylelint src/**/*.{html,vue,css,sass,scss} --fix",
-```
-
-当我们执行npm run stylelint就可以对样式进行格式化，当然vscode也会在你保存文件的时候校验一次
-
 #### 5、配置husky
 
-当我们将eslint和stylelint配置完成之后，vscode会自动根据配置的校验规则格式化代码，但是也避免不了其他同事没有配置编辑器或者使用了其他的编辑器进行项目开发，如果将未校验的代码提交到仓库里面，将导致所有人的代码由于校验规则不匹配而报错，这时候就需要使用husky在提交代码时候进行校验。
+当我们将eslint配置完成之后，vscode会自动根据配置的校验规则格式化代码，但是也避免不了其他同事没有配置编辑器或者使用了其他的编辑器进行项目开发，如果将未校验的代码提交到仓库里面，将导致所有人的代码由于校验规则不匹配而报错，这时候就需要使用husky在提交代码时候进行校验。
 
-当我们在git提交代码时候，会触发一系列hook钩子函数，而husky就是一个Git hooks工具。lint-staged是一个在git暂存文件上运行linters的工具,为什么要用这个工具呢，因为我们在提交代码的时候，只需要对已经修改过的文件进行校验，不然检查所有文件，比较浪费时间。那我们改怎么配置呢？
+当我们在git提交代码时候，会触发一系列hook钩子函数，而husky就是一个Git hooks工具。lint-staged是一个在git暂存文件上运行linters的工具,为什么要用这个工具呢，因为我们在提交代码的时候，只需要对已经修改过的文件进行校验，不然检查所有文件，比较浪费时间。那我们该怎么配置呢？
 
 首先新建.commitlintrc.js文件，添加如下代码
 
@@ -199,14 +169,11 @@ module.exports = {
   "*.{js,vue}": [
     "vue-cli-service lint",
     "git add -A"
-  ],
-  "*.{html,vue,css,sass,scss}": [
-    "npm run stylelint"
   ]
 }
 ```
 
-这时候你如果执行git commit -m '提交描述'的时候，会发现提交之前会调用eslint与stylelint进行代码格式化，这个时候提交到仓库的代码就统一风格了。
+这时候你如果执行git commit -m '提交描述'的时候，会发现提交之前会调用eslint与进行代码格式化，这个时候提交到仓库的代码就统一风格了。
 
 以上就是统一代码规范的一些的配置，后续也会不断的完善这套配置。
 
