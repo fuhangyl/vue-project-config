@@ -9,8 +9,13 @@
 下面我们就来一起看看具体的配置：
 
 #### 1、配置过程中需要的依赖
+<<<<<<< HEAD
 * @commitlint/cli
 * @commitlint/config-conventional
+=======
+* @commitlint/cli": "^9.0.1
+* @commitlint/config-conventional": "^9.0.1
+>>>>>>> f2e4e00478b9b11083e9ab5698ce7e369773e0a0
 * @vue/cli-plugin-eslint
 * @vue/eslint-config-prettier
 * babel-eslint
@@ -112,9 +117,15 @@ yarn-error.log*
 *.sw?
 ```
 
+配置完之后，在package.json的script里面添加命令
+
+```js
+"eslint": "vue-cli-service lint"
+```
+
 这个时候执行npm run lint就可以对代码进行格式化，当然vscode也会在你保存文件的时候校验一次
 
-#### 5、配置husky
+#### 4、配置husky
 
 当我们将eslint配置完成之后，vscode会自动根据配置的校验规则格式化代码，但是也避免不了其他同事没有配置编辑器或者使用了其他的编辑器进行项目开发，如果将未校验的代码提交到仓库里面，将导致所有人的代码由于校验规则不匹配而报错，这时候就需要使用husky在提交代码时候进行校验。
 
