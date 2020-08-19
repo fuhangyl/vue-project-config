@@ -21,11 +21,6 @@
 * husky
 * lint-staged
 * prettier
-* stylelint
-* stylelint-config-recess-order 
-* stylelint-config-standard
-* stylelint-prettier
-* stylelint-scss
 
 备注：现在创建项目基本都是基于vue-cli3.x(ESLint + Prettite)，上面有部分依赖在创建项目的时候会默认安装，可忽略。
 
