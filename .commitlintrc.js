@@ -1,32 +1,35 @@
-
 module.exports = {
-  extends: ['@commitlint/config-conventional'],
+  extends: ["@commitlint/config-conventional"],
   rules: {
-    'type-enum': [
+    "type-enum": [
       2,
-      'always',
+      "always",
       [
         // 新功能（feature）
-        'feat',
+        "feat",
         // 修补bug
-        'fix',
+        "fix",
+        // 合并分支
+        "merge",
+        // 性能优化
+        "perf",
         // 文档（documentation）
-        'docs',
+        "docs",
         // 格式（不影响代码运行的变动）
-        'style',
+        "style",
         // 重构（即不是新增功能，也不是修改bug的代码变动）
-        'refactor',
+        "refactor",
         // 增加测试
-        'test',
+        "test",
         // 回滚
-        'revert',
+        "revert",
         // 构建过程或辅助工具的变动
-        'config',
+        "config",
         // 其他改动
-        'chore'
+        "chore"
       ]
     ],
-    'subject-full-stop': [0, 'never'],
-    'subject-case': [0, 'never']
+    "subject-full-stop": [0, "never"],
+    "subject-case": [0, "never"]
   }
-}
+};
