@@ -172,6 +172,7 @@ module.exports = {
 },
 "lint-staged": {
   "*.{js,vue}": [
+    "prettier --write",
     "vue-cli-service lint",
     "git add -A"
   ]
