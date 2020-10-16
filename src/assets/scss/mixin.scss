@@ -1,5 +1,13 @@
+// flex 布局
 @mixin flex_layout($align, $justify) {
   display: flex;
   align-items: $align;
   justify-content: $justify;
+}
+
+// 背景图片
+@mixin backgroundImage($url) {
+  background-image: url($url);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }

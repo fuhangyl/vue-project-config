@@ -9,6 +9,12 @@ const routes = [
     name: 'LayoutRem',
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/layout-rem')
+  },
+  {
+    path: '/swiper-preview',
+    name: 'SwiperPreview',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/swiper-preview')
   }
 ]
 
